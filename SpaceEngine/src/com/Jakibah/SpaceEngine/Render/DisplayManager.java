@@ -8,17 +8,21 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.PixelFormat;
 
 public class DisplayManager {
-	public static final int WIDTH = 1280, HEIGHT = 720, FPS_CAP = 120;
+	public static int WIDTH, HEIGHT, FPS_CAP;
+	public static String TITLE;
 	
 	
-	public static void createDisplay(){
-		
+	public static void createDisplay(int Width, int Height, int Fps_cap, String Title){
+		WIDTH = Width;
+		HEIGHT = Height;
+		FPS_CAP = Fps_cap;
+		TITLE = Title;
 		ContextAttribs attribs = new ContextAttribs(3, 2).withForwardCompatible(true).withProfileCore(true);
 		
 		try {
 			Display.setDisplayMode(new DisplayMode(WIDTH, HEIGHT));
 			Display.create(new PixelFormat(), attribs);
-			Display.setTitle("SpaceEngine by Jakibah");
+			Display.setTitle(TITLE);
 		} catch (LWJGLException e) {
 			e.printStackTrace();
 		}
