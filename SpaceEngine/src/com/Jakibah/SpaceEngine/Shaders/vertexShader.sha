@@ -1,0 +1,13 @@
+#version 130
+
+in vec3 position;
+
+out vec3 Colour;
+
+void main(void){
+	
+	gl_Position = vec4(position,1.0);
+	Colour = vec3(position.x+0.5,1.0,position.y+0.5);
+	
+	
+}

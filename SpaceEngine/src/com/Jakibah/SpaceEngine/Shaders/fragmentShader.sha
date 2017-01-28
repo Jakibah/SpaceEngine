@@ -1,0 +1,11 @@
+#version 130
+
+in vec3 Colour;
+
+out vec4 out_Color;
+
+void main(void){
+	
+	out_Color = vec4(Colour,1.0);
+	
+}
