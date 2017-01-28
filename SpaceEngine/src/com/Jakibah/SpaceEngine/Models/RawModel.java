@@ -1,4 +1,4 @@
-package com.Jakibah.SpaceEngine.Render;
+package com.Jakibah.SpaceEngine.Models;
 
 public class RawModel {
 	

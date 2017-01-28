@@ -2,11 +2,13 @@ package com.Jakibah.SpaceEngine.Test;
 
 import org.lwjgl.opengl.Display;
 
+import com.Jakibah.SpaceEngine.Models.RawModel;
+import com.Jakibah.SpaceEngine.Models.TexturedModel;
 import com.Jakibah.SpaceEngine.Render.DisplayManager;
 import com.Jakibah.SpaceEngine.Render.Loader;
-import com.Jakibah.SpaceEngine.Render.RawModel;
 import com.Jakibah.SpaceEngine.Render.Render;
 import com.Jakibah.SpaceEngine.Shaders.StaticShader;
+import com.Jakibah.SpaceEngine.Textures.ModelTexture;
 
 public class Main {
 
@@ -32,7 +34,18 @@ public class Main {
 				3,1,2
 		};
 		
-		RawModel model = loader.loadToVAO(vertices, indices);
+		float[] textureCoords = {
+				0,0,
+				0,1,
+				1,1,
+				1,0
+				
+		};
+		
+		RawModel model = loader.loadToVAO(vertices, textureCoords, indices);
+		ModelTexture texture = new ModelTexture(loader.loadTexture("Debug"));
+		TexturedModel texturedModel = new TexturedModel(model, texture);
+		
 		
 		while(!Display.isCloseRequested()){
 		    renderer.prepare();
@@ -41,7 +54,7 @@ public class Main {
 			
 			
 			//fps
-			renderer.render(model);
+			renderer.render(texturedModel);
 			
 			shader.stop();
 			DisplayManager.updateDisplay();
